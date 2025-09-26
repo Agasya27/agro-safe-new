@@ -20,8 +20,13 @@ import {
   Heart
 } from 'lucide-react';
 import farmHero from '@/assets/farm-hero.jpg';
+// Add these imports at the top with the others
+import { Link, useNavigate } from "react-router-dom";
+
+
 
 const Index = () => {
+  const navigate = useNavigate();
   const features = [
     {
       title: 'Risk Assessment',
@@ -92,6 +97,7 @@ const Index = () => {
       icon: <Stethoscope className="h-4 w-4" />,
     },
   ];
+  
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
@@ -153,7 +159,7 @@ const Index = () => {
               <Button
                 size="lg"
                 className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-farm-lg hover-lift-advanced hover-glow transition-all duration-500 text-lg px-8 py-4 hover-shine"
-                onClick={() => window.location.href = '/dashboard'}
+                 onClick={() => navigate('/dashboard')}
               >
                 <Smartphone className="mr-3 h-6 w-6" />
                 Get Started
@@ -162,7 +168,7 @@ const Index = () => {
                 variant="outline"
                 size="lg"
                 className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary hover-lift-advanced transition-all duration-500 text-lg px-8 py-4 backdrop-blur-sm hover-shine"
-                onClick={() => window.location.href = '/training'}
+                 onClick={() => navigate('/training')}
               >
                 <BookOpen className="mr-3 h-6 w-6" />
                 Learn More
@@ -277,6 +283,9 @@ const Index = () => {
                 className="animate-slide-in-up hover-lift-advanced hover-rotate group"
                 style={{ animationDelay: `${index * 0.15}s` }}
               >
+                <Link to={feature.href} aria-label={feature.title}>
+      <FeatureCard {...feature} />
+    </Link>
                 <FeatureCard {...feature} />
               </div>
             ))}
