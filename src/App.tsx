@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import Chatbot from "@/components/Chatbot";
 import Index from "./pages/Index";
@@ -22,7 +22,8 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter>
+        {/* Use HashRouter instead of BrowserRouter */}
+        <Router>
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/dashboard" element={<Dashboard />} />
@@ -31,14 +32,15 @@ const App = () => (
             <Route path="/alerts" element={<Alerts />} />
             <Route path="/veterinary" element={<Veterinary />} />
             <Route path="/community" element={<Community />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            {/* Catch-all route */}
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Chatbot />
-        </BrowserRouter>
+        </Router>
       </TooltipProvider>
     </LanguageProvider>
   </QueryClientProvider>
 );
 
 export default App;
+
