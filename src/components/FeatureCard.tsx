@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Link } from 'react-router-dom';
 
 interface FeatureCardProps {
   title: string;
@@ -20,15 +21,15 @@ export function FeatureCard({
   variant = 'default'
 }: FeatureCardProps) {
   return (
-    <Card
-      className={cn(
-        'glass transition-all duration-500 cursor-pointer group relative overflow-hidden',
-        'hover:shadow-glow hover:-translate-y-2 hover:scale-105',
-        'border border-primary/10 hover:border-primary/30',
-        variant === 'featured' && 'bg-gradient-to-br from-primary/5 to-accent/5 border-primary/30'
-      )}
-      onClick={() => window.location.href = href}
-    >
+    <Link to={href}>
+      <Card
+        className={cn(
+          'glass transition-all duration-500 cursor-pointer group relative overflow-hidden',
+          'hover:shadow-glow hover:-translate-y-2 hover:scale-105',
+          'border border-primary/10 hover:border-primary/30',
+          variant === 'featured' && 'bg-gradient-to-br from-primary/5 to-accent/5 border-primary/30'
+        )}
+      >
       {/* Animated background gradient on hover */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
@@ -67,5 +68,6 @@ export function FeatureCard({
         </Button>
       </CardContent>
     </Card>
+    </Link>
   );
 }

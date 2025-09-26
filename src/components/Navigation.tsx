@@ -3,6 +3,7 @@ import { Menu, X, Shield, Users, BookOpen, Bell, MapPin, FileText } from 'lucide
 import { Button } from '@/components/ui/button';
 import { LanguageSelector } from './LanguageSelector';
 import { cn } from '@/lib/utils';
+import { Link } from 'react-router-dom';
 
 const navigationItems = [
   { name: 'Dashboard', href: '/dashboard', icon: Shield },
@@ -34,16 +35,16 @@ export function Navigation() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1">
             {navigationItems.map((item, index) => (
-              <Button
-                key={item.name}
-                variant="ghost"
-                className="gap-2 hover-lift transition-all duration-300 animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-                onClick={() => window.location.href = item.href}
-              >
-                <item.icon className="h-4 w-4" />
-                <span className="hidden lg:inline">{item.name}</span>
-              </Button>
+              <Link key={item.name} to={item.href}>
+                <Button
+                  variant="ghost"
+                  className="gap-2 hover-lift transition-all duration-300 animate-fade-in"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <item.icon className="h-4 w-4" />
+                  <span className="hidden lg:inline">{item.name}</span>
+                </Button>
+              </Link>
             ))}
           </div>
 
@@ -72,23 +73,20 @@ export function Navigation() {
         )}>
           <div className="px-2 pt-2 pb-3 space-y-1">
             {navigationItems.map((item, index) => (
-              <Button
-                key={item.name}
-                variant="ghost"
-                className={cn(
-                  "w-full justify-start gap-3 py-3 px-3 transition-all duration-300",
-                  "hover:bg-muted hover-lift",
-                  isOpen ? "animate-slide-in-left" : ""
-                )}
-                style={{ animationDelay: `${index * 0.1}s` }}
-                onClick={() => {
-                  window.location.href = item.href;
-                  setIsOpen(false);
-                }}
-              >
-                <item.icon className="h-5 w-5 text-primary" />
-                <span>{item.name}</span>
-              </Button>
+              <Link key={item.name} to={item.href} onClick={() => setIsOpen(false)}>
+                <Button
+                  variant="ghost"
+                  className={cn(
+                    "w-full justify-start gap-3 py-3 px-3 transition-all duration-300",
+                    "hover:bg-muted hover-lift",
+                    isOpen ? "animate-slide-in-left" : ""
+                  )}
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <item.icon className="h-5 w-5 text-primary" />
+                  <span>{item.name}</span>
+                </Button>
+              </Link>
             ))}
           </div>
         </div>
