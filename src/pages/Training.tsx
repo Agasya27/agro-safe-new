@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { useToast } from '@/hooks/use-toast';
 import {
   BookOpen,
   Play,
@@ -19,6 +20,7 @@ import {
 } from 'lucide-react';
 
 const Training = () => {
+  const { toast } = useToast();
   const trainingModules = [
     {
       id: 1,
@@ -51,7 +53,8 @@ const Training = () => {
       completed: false,
       progress: 75,
       difficulty: 'Advanced',
-      category: 'Emergency'
+      category: 'Emergency',
+      videoUrl: 'https://youtu.be/fjH9Ul3w9SI?si=vjHGSLGoPAYGKEm1'
     },
     {
       id: 4,
@@ -62,7 +65,8 @@ const Training = () => {
       completed: false,
       progress: 0,
       difficulty: 'Intermediate',
-      category: 'Health'
+      category: 'Health',
+      videoUrl: 'https://youtu.be/nJmPaEhPF6E?si=ue_E4UWls-pEkW1D'
     },
     {
       id: 5,
@@ -73,7 +77,8 @@ const Training = () => {
       completed: false,
       progress: 0,
       difficulty: 'Beginner',
-      category: 'Hygiene'
+      category: 'Hygiene',
+      videoUrl: 'https://youtu.be/7yfvyD737Go?si=NU5-Fwjd4M3dehPm'
     },
     {
       id: 6,
@@ -84,7 +89,8 @@ const Training = () => {
       completed: false,
       progress: 0,
       difficulty: 'Beginner',
-      category: 'Management'
+      category: 'Management',
+      videoUrl: 'https://youtu.be/0_VHPBu7GKc?si=PvLHTxejDBgi5Fyx'
     }
   ];
 
@@ -116,7 +122,13 @@ const Training = () => {
                 <Award className="h-4 w-4" />
                 {completionRate}% Complete
               </Badge>
-              <Button className="gap-2">
+              <Button
+                className="gap-2"
+                onClick={() => toast({
+                  title: "No Live Session",
+                  description: "No live session available right now. Please check back later.",
+                })}
+              >
                 <Users className="h-4 w-4" />
                 Join Live Session
               </Button>
@@ -232,9 +244,11 @@ const Training = () => {
                     )}
 
                     <div className="flex gap-2">
-                      <Button 
-                        className="flex-1 gap-2" 
+                      <Button
+                        className="flex-1 gap-2"
                         variant={module.completed ? "outline" : "default"}
+                        onClick={() => module.videoUrl && window.open(module.videoUrl, '_blank')}
+                        disabled={!module.videoUrl}
                       >
                         {module.completed ? (
                           <>
@@ -244,7 +258,7 @@ const Training = () => {
                         ) : (
                           <>
                             <Play className="h-4 w-4" />
-                            {module.progress > 0 ? 'Continue' : 'Start'}
+                            Start
                           </>
                         )}
                       </Button>

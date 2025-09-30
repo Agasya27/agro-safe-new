@@ -22,15 +22,15 @@ export function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex items-center gap-3 animate-fade-in">
-            <div className="flex-shrink-0 bg-gradient-primary p-2 rounded-lg hover-glow transition-all duration-300">
-              <Shield className="h-6 w-6 text-primary-foreground animate-pulse-slow" />
+          <Link to="/" className="flex items-center gap-3 animate-fade-in">
+            <div className="flex-shrink-0">
+              <img src="/livesecure.jpg" alt="Livsecure Logo" className="h-15 w-14 rounded-lg hover-glow transition-all duration-300" />
             </div>
             <div className="hidden sm:block">
               <h1 className="text-xl font-bold text-foreground hover:text-primary transition-colors duration-300">Livsecure</h1>
               <p className="text-xs text-muted-foreground">Livestock Health Platform</p>
             </div>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1">

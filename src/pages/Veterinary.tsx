@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
+import { useToast } from '@/hooks/use-toast';
 import {
   Stethoscope,
   Phone,
@@ -23,6 +24,7 @@ import {
 } from 'lucide-react';
 
 const Veterinary = () => {
+  const { toast } = useToast();
   const [selectedService, setSelectedService] = useState('consultation');
 
   const veterinarians = [
@@ -157,11 +159,21 @@ const Veterinary = () => {
               <p className="text-muted-foreground">Professional veterinary care for your livestock</p>
             </div>
             <div className="flex items-center gap-3">
-              <Button className="gap-2">
+              <Button
+                className="gap-2"
+                onClick={() => window.location.href = 'tel:1962'}
+              >
                 <Phone className="h-4 w-4" />
                 Emergency Call
               </Button>
-              <Button variant="outline" className="gap-2">
+              <Button
+                variant="outline"
+                className="gap-2"
+                onClick={() => toast({
+                  title: "Booking Section",
+                  description: "Booking section is under development. Please check back later.",
+                })}
+              >
                 <Calendar className="h-4 w-4" />
                 Book Appointment
               </Button>

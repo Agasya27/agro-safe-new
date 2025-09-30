@@ -165,9 +165,8 @@ const Index = () => {
                 Get Started
               </Button>
               <Button
-                variant="outline"
                 size="lg"
-                className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary hover-lift-advanced transition-all duration-500 text-lg px-8 py-4 backdrop-blur-sm hover-shine"
+                className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-farm-lg hover-lift-advanced hover-glow transition-all duration-500 text-lg px-8 py-4 hover-shine"
                  onClick={() => navigate('/training')}
               >
                 <BookOpen className="mr-3 h-6 w-6" />
@@ -284,9 +283,8 @@ const Index = () => {
                 style={{ animationDelay: `${index * 0.15}s` }}
               >
                 <Link to={feature.href} aria-label={feature.title}>
-      <FeatureCard {...feature} />
-    </Link>
-                <FeatureCard {...feature} />
+                  <FeatureCard {...feature} />
+                </Link>
               </div>
             ))}
           </div>
@@ -320,9 +318,8 @@ const Index = () => {
               Create Account
             </Button>
             <Button
-              variant="outline"
               size="lg"
-              className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary hover-lift-advanced text-lg px-10 py-4 backdrop-blur-sm hover-shine"
+              className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-farm-lg hover-lift-advanced hover-glow text-lg px-10 py-4 hover-shine"
               onClick={() => window.location.href = '/demo'}
             >
               <TrendingUp className="mr-3 h-6 w-6" />
@@ -345,8 +342,8 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
             <div className="flex items-center justify-center gap-4 mb-6">
-              <div className="bg-gradient-primary p-3 rounded-xl shadow-glow animate-pulse-glow">
-                <Shield className="h-8 w-8 text-primary-foreground" />
+              <div className="shadow-glow animate-pulse-glow">
+                <img src="/livesecure.jpg" alt="Livsecure Logo" className="h-20 w-15 rounded-lg" />
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-foreground">Livsecure</h3>
@@ -354,7 +351,7 @@ const Index = () => {
               </div>
             </div>
             <p className="text-muted-foreground text-lg">
-              © 2024 Livsecure. Protecting livestock through technology.
+              © 2025 Livsecure. Protecting livestock through technology.
             </p>
           </div>
         </div>
